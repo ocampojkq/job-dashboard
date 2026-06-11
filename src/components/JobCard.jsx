@@ -26,3 +26,7 @@ export default function JobCard({ job }) {
     </div>
   );
 }
+
+// git add .
+// git commit -m "Finished job details page"
+// git push
