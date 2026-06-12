@@ -1,14 +1,20 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import JobCard from "./components/JobCard";
-import { jobs } from "./data/jobs";
+import useJobs from "./hooks/useJobs";
 import { Routes, Route } from "react-router-dom";
 import JobDetails from "./pages/JobDetails";
 import Footer from "./components/Footer";
 
 function App() {
+  const jobs = useJobs();
+  console.log("App jobs:", jobs);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  if (jobs.length === 0) {
+    return <div className="p-10 text-center text-xl">Loading jobs...</div>;
+  }
 
   const categories = ["All", "Shopify", "Customer Support", "Video Editing"];
 

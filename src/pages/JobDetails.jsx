@@ -1,18 +1,15 @@
 import { useParams, Link } from "react-router-dom";
-import { jobs } from "../data/jobs";
+import useJobs from "../hooks/useJobs";
 
 export default function JobDetails() {
   const { id } = useParams();
+  const jobs = useJobs();
 
-  const job = jobs.find((job) => job.id === Number(id));
-
-  if (!job) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <h1 className="text-2xl font-bold">Job not found</h1>
-      </div>
-    );
+  if (jobs.length === 0) {
+    return <div className="p-10 text-center">Loading job...</div>;
   }
+
+  const job = jobs.find((job) => String(job.id) === String(id));
 
   return (
     <div className="max-w-4xl mx-auto p-6">
