@@ -51,6 +51,7 @@ function App() {
     "Support Specialist",
     "Virtual Assistant",
     "WooCommerce",
+    "Real State",
   ];
 
   const filteredJobs = sortedJobs.filter((job) => {
