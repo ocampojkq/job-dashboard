@@ -72,11 +72,12 @@ function App() {
 
             <div className="max-w-6xl mx-auto p-6">
               {/* Filters Row */}
-              <div className="flex gap-3 mb-6">
+              {/* Filters Row */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="p-3 border rounded-lg bg-white text-gray-700 cursor-pointer min-w-[200px]"
+                  className="p-3 border rounded-lg bg-white text-gray-700 cursor-pointer sm:min-w-[200px]"
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>
