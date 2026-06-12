@@ -1,11 +1,24 @@
 import { Link } from "react-router-dom";
 
 export default function JobCard({ job }) {
+  const isNew = () => {
+    const postedText = job.posted.replace("Posted on ", "");
+    const postedDate = new Date(postedText);
+    const now = new Date();
+    const diffHours = (now - postedDate) / (1000 * 60 * 60);
+    return diffHours <= 24;
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
       {/* Job Title */}
-      <h2 className="text-xl font-bold text-gray-800 line-clamp-2">
+      <h2 className="text-xl font-bold text-gray-800 line-clamp-2 flex items-center gap-2">
         {job.title}
+        {isNew() && (
+          <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold animate-pulse shrink-0">
+            NEW
+          </span>
+        )}
       </h2>
 
       {/* Salary & Category */}
@@ -42,18 +55,14 @@ export default function JobCard({ job }) {
             viewBox="0 0 24 24"
             fill="currentColor"
           >
-            <path
-              fillRule="evenodd"
-              d="M4 5a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2H4zm0 2h16v10H4V7zm2 2a1 1 0 000 2h2a1 1 0 000-2H6zm0 4a1 1 0 000 2h2a1 1 0 000-2H6zm4-4a1 1 0 000 2h6a1 1 0 000-2h-6zm0 4a1 1 0 000 2h4a1 1 0 000-2h-4z"
-              clipRule="evenodd"
-            />
+            <path d="M4 5a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2H4zm0 2h16v10H4V7zm2 2a1 1 0 000 2h2a1 1 0 000-2H6zm0 4a1 1 0 000 2h2a1 1 0 000-2H6zm4-4a1 1 0 000 2h6a1 1 0 000-2h-6zm0 4a1 1 0 000 2h4a1 1 0 000-2h-4z" />
           </svg>
           {job.company}
         </p>
         <p className="text-sm text-gray-500 flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-4 h-4 text-gray.400"
+            className="w-4 h-4 text-gray-400"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
