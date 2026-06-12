@@ -1,6 +1,8 @@
-export default function Footer() {
+export default function Footer({ darkMode }) {
   return (
-    <footer className="bg-white border-t mt-10">
+    <footer
+      className={`border-t mt-10 ${darkMode ? "bg-gray-900 border-gray-700" : "bg-white"}`}
+    >
       {/* Scroll to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -20,7 +22,9 @@ export default function Footer() {
           />
         </svg>
       </button>
-      <div className="max-w-6xl mx-auto p-6 text-center text-gray-500">
+      <div
+        className={`max-w-6xl mx-auto p-6 text-center ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+      >
         © 2026 Kit Ocampo
       </div>
     </footer>

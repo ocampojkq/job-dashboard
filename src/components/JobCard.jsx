@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function JobCard({ job }) {
+export default function JobCard({ job, darkMode }) {
   const isNew = () => {
     const postedText = job.posted.replace("Posted on ", "");
     const postedDate = new Date(postedText);
@@ -10,9 +10,15 @@ export default function JobCard({ job }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+    <div
+      className={`rounded-xl shadow-md p-6 border hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full ${
+        darkMode
+          ? "bg-gray-800 border-gray-700 text-white"
+          : "bg-white border-slate-200"
+      }`}
+    >
       {/* Job Title */}
-      <h2 className="text-xl font-bold text-gray-800 line-clamp-2 flex items-center gap-2">
+      <h2 className="text-xl font-bold line-clamp-2 flex items-center gap-2">
         {job.title}
         {isNew() && (
           <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold animate-pulse shrink-0">
@@ -33,7 +39,9 @@ export default function JobCard({ job }) {
 
       {/* Company Info */}
       <div className="mt-4 space-y-2">
-        <p className="text-gray-500 flex items-center gap-2">
+        <p
+          className={`flex items-center gap-2 ${darkMode ? "text-gray-300" : "text-gray-500"}`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-4 h-4 text-gray-400"
@@ -48,7 +56,9 @@ export default function JobCard({ job }) {
           </svg>
           {job.location}
         </p>
-        <p className="text-gray-700 font-medium flex items-center gap-2">
+        <p
+          className={`font-medium flex items-center gap-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-4 h-4 text-gray-400"
@@ -59,7 +69,9 @@ export default function JobCard({ job }) {
           </svg>
           {job.company}
         </p>
-        <p className="text-sm text-gray-500 flex items-center gap-2">
+        <p
+          className={`text-sm flex items-center gap-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="w-4 h-4 text-gray-400"
