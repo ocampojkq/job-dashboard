@@ -10,7 +10,6 @@ function App() {
   const jobs = useJobs();
   const sortedJobs = [...jobs].reverse();
 
-  console.log("App jobs:", jobs);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -18,16 +17,48 @@ function App() {
     return <div className="p-10 text-center text-xl">Loading jobs...</div>;
   }
 
-  const categories = ["All", "Shopify", "Customer Support", "Video Editing"];
+  const categories = [
+    "All",
+    "AI Automation",
+    "Admin",
+    "Amazon",
+    "Amazon FBA",
+    "Amazon PPC",
+    "Bookkeeping",
+    "Brand Manager",
+    "Chat Support",
+    "Customer Service",
+    "Data Entry",
+    "Dropshipping",
+    "E-commerce",
+    "Email Marketing",
+    "Email Support",
+    "Executive Assistant",
+    "Facebook Ads",
+    "Fulfillment",
+    "Graphic Design",
+    "Inventory Management",
+    "Marketing",
+    "Operations Coordinator",
+    "Personal Assistant",
+    "Product Listing",
+    "Product Research",
+    "SEO",
+    "Seller Central",
+    "Shopify",
+    "Social Media",
+    "Social Media Manager",
+    "Support Specialist",
+    "Virtual Assistant",
+    "WooCommerce",
+  ];
 
   const filteredJobs = sortedJobs.filter((job) => {
     const matchesSearch = job.title
       .toLowerCase()
       .includes(search.toLowerCase());
-
     const matchesCategory =
       selectedCategory === "All" || job.category === selectedCategory;
-
     return matchesSearch && matchesCategory;
   });
 
@@ -40,24 +71,29 @@ function App() {
             <Navbar />
 
             <div className="max-w-6xl mx-auto p-6">
-              {/* Category Buttons */}
+              {/* Filters Row */}
               <div className="flex gap-3 mb-6">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg ${
-                      selectedCategory === category
-                        ? "bg-blue-600 text-white"
-                        : "bg-white border"
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="p-3 border rounded-lg bg-white text-gray-700 cursor-pointer min-w-[200px]"
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  placeholder="Search jobs..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="flex-1 p-3 border rounded-lg"
+                />
               </div>
 
-              {/* Search */}
               {/* Active Jobs Dashboard Card */}
               <div className="bg-white rounded-xl shadow-md p-4 mb-6 border border-slate-200 flex items-center justify-between">
                 <div>
@@ -75,13 +111,6 @@ function App() {
                   </p>
                 </div>
               </div>
-              <input
-                type="text"
-                placeholder="Search jobs..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full p-3 border rounded-lg mb-6"
-              />
 
               {/* Job Cards */}
               <div className="grid md:grid-cols-2 gap-6">
