@@ -33,10 +33,6 @@ export default function JobCard({ job }) {
         <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
           {job.jobType}
         </span>
-
-        <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm">
-          {job.experience}
-        </span>
       </div>
 
       {/* Button stays at bottom */}
