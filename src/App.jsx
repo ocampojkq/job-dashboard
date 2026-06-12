@@ -58,6 +58,23 @@ function App() {
               </div>
 
               {/* Search */}
+              {/* Active Jobs Dashboard Card */}
+              <div className="bg-white rounded-xl shadow-md p-4 mb-6 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Current Listings</p>
+                  <h2 className="text-2xl font-bold text-blue-600">
+                    🔥 {filteredJobs.length} Active Jobs
+                  </h2>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-400 text-xs">Last Updated</p>
+                  <p className="text-sm text-gray-600 font-medium">
+                    {new Date().toLocaleString("en-PH", {
+                      timeZone: "Asia/Manila",
+                    })}
+                  </p>
+                </div>
+              </div>
               <input
                 type="text"
                 placeholder="Search jobs..."

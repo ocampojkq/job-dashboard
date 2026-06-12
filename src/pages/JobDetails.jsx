@@ -32,10 +32,6 @@ export default function JobDetails() {
           <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
             {job.jobType}
           </span>
-
-          <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full">
-            {job.experience}
-          </span>
         </div>
 
         <div className="space-y-2 mb-6 text-gray-600">
