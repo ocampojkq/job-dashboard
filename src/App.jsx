@@ -12,6 +12,8 @@ function App() {
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 20;
 
   if (jobs.length === 0) {
     return <div className="p-10 text-center text-xl">Loading jobs...</div>;
@@ -63,6 +65,23 @@ function App() {
     return matchesSearch && matchesCategory;
   });
 
+  const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
+  const paginatedJobs = filteredJobs.slice(
+    (currentPage - 1) * jobsPerPage,
+    currentPage * jobsPerPage,
+  );
+
+  // Reset to page 1 when search or category changes
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleCategory = (e) => {
+    setSelectedCategory(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <Routes>
       <Route
@@ -73,11 +92,10 @@ function App() {
 
             <div className="max-w-6xl mx-auto p-6">
               {/* Filters Row */}
-              {/* Filters Row */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <select
                   value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  onChange={handleCategory}
                   className="p-3 border rounded-lg bg-white text-gray-700 cursor-pointer sm:min-w-[200px]"
                 >
                   {categories.map((category) => (
@@ -91,7 +109,7 @@ function App() {
                   type="text"
                   placeholder="Search jobs..."
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={handleSearch}
                   className="flex-1 p-3 border rounded-lg"
                 />
               </div>
@@ -101,7 +119,7 @@ function App() {
                 <div>
                   <p className="text-gray-500 text-sm">Current Listings</p>
                   <h2 className="text-2xl font-bold text-blue-600">
-                    {filteredJobs.length} Active Jobs
+                    🔥 {filteredJobs.length} Active Jobs
                   </h2>
                 </div>
                 <div className="text-right">
@@ -116,10 +134,37 @@ function App() {
 
               {/* Job Cards */}
               <div className="grid md:grid-cols-2 gap-6">
-                {filteredJobs.map((job) => (
+                {paginatedJobs.map((job) => (
                   <JobCard key={job.id} job={job} />
                 ))}
               </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-3 mt-10">
+                  <button
+                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-lg border bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    ← Prev
+                  </button>
+
+                  <span className="text-gray-600 text-sm">
+                    Page {currentPage} of {totalPages}
+                  </span>
+
+                  <button
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(p + 1, totalPages))
+                    }
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-lg border bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    Next →
+                  </button>
+                </div>
+              )}
             </div>
 
             <Footer />
