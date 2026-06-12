@@ -119,7 +119,7 @@ function App() {
                 <div>
                   <p className="text-gray-500 text-sm">Current Listings</p>
                   <h2 className="text-2xl font-bold text-blue-600">
-                    🔥 {filteredJobs.length} Active Jobs
+                    {filteredJobs.length} Active Jobs
                   </h2>
                 </div>
                 <div className="text-right">
