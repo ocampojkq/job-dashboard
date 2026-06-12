@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 
 function App() {
   const jobs = useJobs();
+  const sortedJobs = [...jobs].reverse();
+
   console.log("App jobs:", jobs);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -18,7 +20,7 @@ function App() {
 
   const categories = ["All", "Shopify", "Customer Support", "Video Editing"];
 
-  const filteredJobs = jobs.filter((job) => {
+  const filteredJobs = sortedJobs.filter((job) => {
     const matchesSearch = job.title
       .toLowerCase()
       .includes(search.toLowerCase());
