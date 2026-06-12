@@ -20,34 +20,48 @@ export default function JobDetails() {
         ← Back to Jobs
       </Link>
 
-      <h1 className="text-4xl font-bold mb-4">{job.title}</h1>
+      <div className="bg-white rounded-xl shadow-md p-8 border border-slate-200">
+        <h1 className="text-4xl font-bold mb-4">{job.title}</h1>
 
-      <div className="flex gap-3 mb-4">
-        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-          {job.salary}
-        </span>
+        <div className="flex flex-wrap gap-3 mb-6">
+          <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+            {job.salary}
+          </span>
 
-        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
-          {job.category}
-        </span>
+          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+            {job.category}
+          </span>
+
+          <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+            {job.jobType}
+          </span>
+
+          <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full">
+            {job.experience}
+          </span>
+        </div>
+
+        <div className="space-y-2 mb-6 text-gray-600">
+          <p>📍 {job.location}</p>
+          <p>🏢 {job.company}</p>
+          <p>⏰ {job.posted}</p>
+        </div>
+
+        <div className="border-t pt-6">
+          <h2 className="text-xl font-semibold mb-3">Job Description</h2>
+
+          <p className="text-gray-700 leading-relaxed">{job.description}</p>
+        </div>
+
+        <a
+          href={job.applyUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block mt-8 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
+        >
+          Apply Now
+        </a>
       </div>
-
-      <p className="text-gray-600 mb-2">📍 {job.location}</p>
-
-      <p className="text-gray-600 mb-2">Company: {job.company}</p>
-
-      <p className="text-gray-600 mb-6">Posted: {job.posted}</p>
-
-      <p className="text-lg mb-6">{job.description}</p>
-
-      <a
-        href={job.applyUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-block bg-green-600 text-white px-5 py-3 rounded-lg hover:bg-green-700"
-      >
-        Apply Now
-      </a>
     </div>
   );
 }

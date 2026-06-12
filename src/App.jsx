@@ -4,6 +4,7 @@ import JobCard from "./components/JobCard";
 import { jobs } from "./data/jobs";
 import { Routes, Route } from "react-router-dom";
 import JobDetails from "./pages/JobDetails";
+import Footer from "./components/Footer";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -64,6 +65,8 @@ function App() {
                 ))}
               </div>
             </div>
+
+            <Footer />
           </>
         }
       />
