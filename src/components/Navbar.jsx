@@ -1,7 +1,6 @@
 import { FaGithubSquare, FaFacebookSquare } from "react-icons/fa";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { MdContacts } from "react-icons/md";
 
 export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
   return (
@@ -22,14 +21,6 @@ export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
           >
             {darkMode ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
           </button>
-          <a
-            href="https://jesse-kit-portfolio.netlify.app"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-blue-500"
-          >
-            <MdContacts className="w-8 h-8" />
-          </a>
 
           <a
             href="https://www.facebook.com/sspaniardd"
