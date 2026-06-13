@@ -92,8 +92,14 @@ function App() {
             path="/"
             element={
               <>
-                <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-
+                <Navbar
+                  darkMode={darkMode}
+                  setDarkMode={setDarkMode}
+                  onLogoClick={() => {
+                    setCurrentPage(1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                />
                 <div className="max-w-6xl mx-auto p-6">
                   {/* Filters Row */}
                   <div className="flex flex-col sm:flex-row gap-3 mb-6">

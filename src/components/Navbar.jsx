@@ -1,13 +1,18 @@
 import { FaGithubSquare, FaFacebookSquare } from "react-icons/fa";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-export default function Navbar({ darkMode, setDarkMode }) {
+export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
   return (
     <nav
       className={`shadow-md ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-500">VA Job Hub</h1>
+        <Link to="/" onClick={onLogoClick}>
+          <h1 className="text-2xl font-bold text-blue-500 hover:text-blue-600 transition">
+            VA Job Hub
+          </h1>
+        </Link>
 
         <div className="flex items-center gap-4">
           <button
