@@ -21,22 +21,20 @@ export default function JobCard({ job, darkMode }) {
       <h2 className="text-xl font-bold line-clamp-2 flex items-center gap-2">
         {job.title}
         {isNew() && (
-          <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold animate-pulse shrink-0">
+          <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-lg font-semibold animate-pulse shrink-0">
             NEW
           </span>
         )}
       </h2>
-
       {/* Salary & Category */}
       <div className="flex flex-wrap gap-2 mt-3">
-        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+        <span className=" bg-blue-600 text-white px-3 py-1 rounded-lg text-sm">
           {job.salary}
         </span>
-        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+        <span className="bg-blue-50 text-black px-3 py-1 rounded-lg text-sm">
           {job.category}
         </span>
       </div>
-
       {/* Company Info */}
       <div className="mt-4 space-y-2">
         <p
@@ -87,14 +85,12 @@ export default function JobCard({ job, darkMode }) {
           {job.posted}
         </p>
       </div>
-
       {/* Job Type */}
       <div className="flex flex-wrap gap-2 mt-4">
-        <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
+        <span className=" bg-blue-50 text-black px-3 py-1 rounded-lg text-sm">
           {job.jobType}
         </span>
       </div>
-
       {/* Button */}
       <div className="mt-auto pt-6">
         <Link
