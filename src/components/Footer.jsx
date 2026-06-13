@@ -25,7 +25,7 @@ export default function Footer({ darkMode }) {
       <div
         className={`max-w-6xl mx-auto p-6 text-center ${darkMode ? "text-gray-400" : "text-gray-500"}`}
       >
-        © 2026 Kit Ocampo
+        © 2026 Jesse Kit Ocampo · Built with n8n + Google Sheets + React
       </div>
     </footer>
   );
