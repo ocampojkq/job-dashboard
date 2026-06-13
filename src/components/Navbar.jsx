@@ -27,7 +27,7 @@ export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
             rel="noreferrer"
             className="text-sm font-medium hover:text-blue-500 transition"
           >
-            Top 30 Jobs
+            Top 30 Jobs Analysis
           </a>
           <a
             href="https://www.facebook.com/sspaniardd"
