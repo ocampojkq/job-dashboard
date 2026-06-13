@@ -21,7 +21,14 @@ export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
           >
             {darkMode ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
           </button>
-
+          <a
+            href="https://olj-top30-kit.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-medium hover:text-blue-500 transition"
+          >
+            Top 30 Jobs
+          </a>
           <a
             href="https://www.facebook.com/sspaniardd"
             target="_blank"
@@ -29,14 +36,6 @@ export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
             className="hover:text-blue-500"
           >
             <FaFacebookSquare className="w-8 h-8" />
-          </a>
-          <a
-            href="https://github.com/ocampojkq/job-dashboard"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-blue-500"
-          >
-            <FaGithubSquare className="w-8 h-8" />
           </a>
         </div>
       </div>
