@@ -22,7 +22,7 @@ export default function Navbar({ darkMode, setDarkMode, onLogoClick }) {
             {darkMode ? <MdLightMode size={20} /> : <MdDarkMode size={20} />}
           </button>
           <a
-            href="https://olj-top30-kit.netlify.app"
+            href="https://va-job-hub-analyzer.netlify.app"
             target="_blank"
             rel="noreferrer"
             className="text-sm font-medium hover:text-blue-500 transition"
